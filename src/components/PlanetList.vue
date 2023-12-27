@@ -1,6 +1,6 @@
 <template>
   <v-col v-for="planet in planets" :key="planet.name" cols="12" md="6" lg="4" xl="3">
-    <v-card>
+    <v-card class="fill-height">
       <PlanetCard :planet="planet" />
     </v-card>
   </v-col>

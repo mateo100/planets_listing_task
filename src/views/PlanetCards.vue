@@ -3,7 +3,7 @@
     <LoadingSpinner v-if="loading" />
     <ErrorAlert v-else-if="error" :errorMessage="error" />
     <template v-else>
-      <v-row align="center">
+      <v-row>
         <v-col cols="6" md="3">
           <v-text-field
             v-model="searchQuery"

@@ -1,7 +1,10 @@
 <template>
-  <v-btn @click="$emit('buttonIconClicked')" class="icon-button">
+  <v-btn
+    @click="$emit('buttonIconClicked')"
+    class="icon-button d-flex justify-center align-center pa-3"
+  >
     <slot />
-    <v-icon small>
+    <v-icon small class="icon-button__icon ml-2">
       {{ iconName }}
     </v-icon>
   </v-btn>
@@ -18,19 +21,13 @@ defineProps({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .icon-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid #3498db;
+  background-color: #3498db;
+  color: #fff;
   transition: background-color 0.2s ease;
-}
-
-.icon-button:hover {
-  background-color: #f0f0f0;
 }
 </style>

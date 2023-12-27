@@ -1,13 +1,17 @@
-export interface Planet {
-  name: string
-  population: string
-  rotation_period: string
-  climate: string
-  gravity: string
-  created: string
-  url: string
-}
-
 export interface PlanetsResponse {
   results: Planet[]
+}
+
+export enum PlanetEnum {
+  Name = 'name',
+  Population = 'population',
+  RotationPeriod = 'rotation_period',
+  Climate = 'climate',
+  Gravity = 'gravity',
+  Created = 'created',
+  Url = 'url'
+}
+
+export type Planet = {
+  [Key in PlanetEnum]: string
 }
