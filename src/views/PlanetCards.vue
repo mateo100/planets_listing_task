@@ -1,29 +1,39 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <LoadingSpinner v-if="loading" />
     <ErrorAlert v-else-if="error" :errorMessage="error" />
     <template v-else>
-      <v-text-field
-        dense
-        v-model="searchQuery"
-        label="Planet name"
-        prepend-inner-icon="mdi-magnify"
-      />
-      <IconButton
-        round
-        variant="outlined"
-        @buttonIconClicked="toggleSortOrder"
-        :iconName="sortOrderIcon"
-      >
-        Sort by name
-      </IconButton>
-      <ListPaginator
-        :totalPages="totalPages"
-        v-model:itemsPerPage="itemsPerPage"
-        v-model:currentPage="currentPage"
-        style="display: flex"
-      />
-      <PlanetList :planets="paginatedPlanets" />
+      <v-row align="center">
+        <v-col cols="6" md="3">
+          <v-text-field
+            v-model="searchQuery"
+            label="Planet name"
+            prepend-inner-icon="mdi-magnify"
+            flat
+            variant="underlined"
+          />
+        </v-col>
+        <v-col cols="6" md="3">
+          <IconButton
+            @buttonIconClicked="toggleSortOrder"
+            :iconName="sortOrderIcon"
+            size="small"
+            rounded="xl"
+          >
+            Sort by name
+          </IconButton>
+        </v-col>
+      </v-row>
+      <v-row>
+        <PlanetList :planets="paginatedPlanets" />
+      </v-row>
+      <v-row justify="end">
+        <ListPaginator
+          :totalPages="totalPages"
+          v-model:itemsPerPage="itemsPerPage"
+          v-model:currentPage="currentPage"
+        />
+      </v-row>
     </template>
   </v-container>
 </template>

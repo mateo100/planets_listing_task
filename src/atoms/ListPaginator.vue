@@ -1,19 +1,18 @@
 <template>
-  <div>
+  <div style="display: flex">
     <v-select
       :modelValue="itemsPerPage"
       @update:modelValue="(newValue) => $emit('update:itemsPerPage', newValue)"
       :items="itemsPerPageOptions"
-      label="Per page"
-      dense
-      style="width: 100px"
+      label="Items per page"
+      style="width: 150px"
     />
     <v-pagination
       :modelValue="currentPage"
       @update:modelValue="(newValue) => $emit('update:currentPage', newValue)"
       :length="totalPages"
       circle
-      style="width: 300px"
+      :totalVisible="3"
     />
   </div>
 </template>
