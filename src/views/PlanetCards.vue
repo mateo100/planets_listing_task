@@ -14,7 +14,11 @@
           />
         </v-col>
         <v-col cols="6" md="3">
-          <IconButton @buttonIconClicked="toggleSortOrder" :iconName="sortOrderIcon" rounded="xl">
+          <IconButton
+            @buttonIconClicked="toggleSortOrder"
+            :iconName="sortOrder === Sort.Ascending ? Icon.ArrowDown : Icon.ArrowUp"
+            rounded="xl"
+          >
             Sort by name
           </IconButton>
         </v-col>
@@ -37,47 +41,37 @@
 import { ref, computed, watch } from 'vue'
 import _ from 'lodash'
 import { useFetchData } from '@/composables/useFetch'
+import { useSearch } from '@/composables/useSearch'
+import { useSort } from '@/composables/useSort'
+import { usePaginate } from '@/composables/usePaginate'
 import LoadingSpinner from '@/atoms/LoadingSpinner.vue'
 import IconButton from '@/atoms/IconButton.vue'
 import ErrorAlert from '@/atoms/ErrorAlert.vue'
 import ListPaginator from '@/atoms/ListPaginator.vue'
 import PlanetList from '@/components/PlanetList.vue'
 import { type PlanetsResponse } from '@/interfaces/Planet'
-import { Icon } from '@/interfaces/Utility'
+import { Icon, Sort } from '@/interfaces/Utility'
 
 const { data, loading, error } = useFetchData<PlanetsResponse>('https://swapi.dev/api/planets')
 
 const itemsPerPage = ref(5)
 const currentPage = ref(1)
 const searchQuery = ref('')
-const sortOrder = ref('asc')
+const sortOrder = ref(Sort.Ascending)
 
 const planets = computed(() => data.value?.results || [])
 
-const calculatePagination = () => {
-  const startIndex = (currentPage.value - 1) * itemsPerPage.value
-  const endIndex = startIndex + itemsPerPage.value
-  return sortedPlanets.value.slice(startIndex, endIndex)
-}
-const paginatedPlanets = computed(calculatePagination)
-
-const filteredPlanets = computed(() => {
-  return planets.value.filter((planet) =>
-    planet.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-  )
-})
-
-const sortedPlanets = computed(() => {
-  return _.orderBy(filteredPlanets.value, ['name'], [sortOrder.value as 'asc' | 'desc'])
-})
+const filteredPlanets = useSearch(planets, searchQuery)
+const sortedPlanets = useSort(filteredPlanets, sortOrder)
+const paginatedPlanets = usePaginate(sortedPlanets, currentPage, itemsPerPage)
 
 const totalPages = computed(() => Math.ceil(sortedPlanets.value.length / itemsPerPage.value))
 
 const toggleSortOrder = () => {
-  sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+  sortOrder.value = sortOrder.value === Sort.Ascending ? Sort.Descending : Sort.Ascending
 }
 
-watch(searchQuery, () => {
+watch([searchQuery, sortOrder], () => {
   currentPage.value = 1
 })
 </script>
