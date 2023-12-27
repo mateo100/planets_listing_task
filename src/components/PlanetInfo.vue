@@ -38,7 +38,7 @@ defineProps({
 .planet-info {
   border-radius: 10px;
   background: linear-gradient(45deg, $white-2, $white-3);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px $dark-3;
   transition: transform 0.3s ease-in-out;
 
   &:hover {

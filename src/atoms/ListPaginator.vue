@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex paginator">
+  <div class="paginator d-flex">
     <v-select
       :modelValue="itemsPerPage"
       @update:modelValue="(newValue) => $emit('update:itemsPerPage', newValue)"
@@ -41,6 +41,7 @@ defineProps({
 
 const itemsPerPageOptions = ref([3, 6, 10])
 </script>
+
 <style scoped lang="scss">
 .paginator {
   &__select {

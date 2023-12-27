@@ -5,9 +5,10 @@
     </v-card>
   </v-col>
 </template>
+
 <script setup lang="ts">
-import type { Planet } from '@/interfaces/Planet'
 import type { PropType } from 'vue'
+import type { Planet } from '@/interfaces/Planet'
 import PlanetCard from '@/components/PlanetCard.vue'
 
 defineProps({
@@ -17,6 +18,7 @@ defineProps({
   }
 })
 </script>
+
 <style lang="scss" scoped>
 .outer-card {
   border-radius: 10px;

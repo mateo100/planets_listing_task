@@ -11,11 +11,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, type PropType } from 'vue'
+import { Icon } from '@/interfaces/Utility'
 
 defineProps({
   iconName: {
-    type: String,
+    type: Object as PropType<Icon>,
     required: true
   }
 })

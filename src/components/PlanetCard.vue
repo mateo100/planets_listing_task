@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
 import { PlanetEnum, type Planet } from '@/interfaces/Planet'
-import { type SingleCardInfo } from '@/interfaces/Utility'
+import { type SingleCardInfo, Icon } from '@/interfaces/Utility'
 import PlanetInfo from '@/components/PlanetInfo.vue'
 
 const props = defineProps({
@@ -34,26 +34,23 @@ const formattedCreationDate = computed(() =>
 )
 
 const planetCardContents: SingleCardInfo[] = [
-  { label: 'Population', icon: 'mdi-account-group', value: formattedPopulation.value },
-  { label: 'Created', icon: 'mdi-update', value: formattedCreationDate.value },
-  {
-    label: 'Rotation Period',
-    icon: 'mdi-rotate-3d-variant',
-    value: planet[PlanetEnum.RotationPeriod]
-  },
-  { label: 'Climate', icon: 'mdi-thermometer', value: planet[PlanetEnum.Climate] },
-  { label: 'Gravity', icon: 'mdi-earth', value: planet[PlanetEnum.Gravity] },
-  { label: 'Url', icon: 'mdi-link', value: planet[PlanetEnum.Url], isLink: true }
+  { label: 'Population', icon: Icon.People, value: formattedPopulation.value },
+  { label: 'Created', icon: Icon.Date, value: formattedCreationDate.value },
+  { label: 'Rotation Period', icon: Icon.Rotation, value: planet[PlanetEnum.RotationPeriod] },
+  { label: 'Climate', icon: Icon.Theromemeter, value: planet[PlanetEnum.Climate] },
+  { label: 'Gravity', icon: Icon.Earth, value: planet[PlanetEnum.Gravity] },
+  { label: 'Url', icon: Icon.Link, value: planet[PlanetEnum.Url], isLink: true }
 ]
 </script>
+
 <style scoped lang="scss">
 .v-card {
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px $dark-3;
   transition: box-shadow 0.3s;
 
   &:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px $dark-4;
   }
 
   &-title {
