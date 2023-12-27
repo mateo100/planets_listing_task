@@ -1,41 +1,39 @@
 <template>
-  <v-container>
-    <LoadingSpinner v-if="loading" />
-    <ErrorAlert v-else-if="error" :errorMessage="error" />
-    <template v-else>
-      <v-row align="center">
-        <v-col cols="6" md="3">
-          <v-text-field
-            v-model="searchQuery"
-            label="Planet name"
-            :prependInnerIcon="Icon.Search"
-            flat
-            variant="underlined"
-          />
-        </v-col>
-        <v-col cols="6" md="3">
-          <IconButton
-            @buttonIconClicked="toggleSortOrder"
-            :iconName="sortOrder === Sort.Ascending ? Icon.ArrowDown : Icon.ArrowUp"
-            rounded="xl"
-          >
-            Sort by name
-          </IconButton>
-        </v-col>
-      </v-row>
-      <v-row>
-        <WarningAlert v-if="!paginatedPlanets.length" warningMessage="No data found" />
-        <PlanetList v-else :planets="paginatedPlanets" />
-      </v-row>
-      <v-row justify="end">
-        <ListPaginator
-          :totalPages="totalPages"
-          v-model:itemsPerPage="itemsPerPage"
-          v-model:currentPage="currentPage"
+  <LoadingSpinner v-if="loading" />
+  <ErrorAlert v-else-if="error" :errorMessage="error" />
+  <template v-else>
+    <v-row align="center">
+      <v-col cols="6" md="3">
+        <v-text-field
+          v-model="searchQuery"
+          label="Planet name"
+          :prependInnerIcon="Icon.Search"
+          flat
+          variant="underlined"
         />
-      </v-row>
-    </template>
-  </v-container>
+      </v-col>
+      <v-col cols="6" md="3">
+        <IconButton
+          @buttonIconClicked="toggleSortOrder"
+          :iconName="sortOrder === Sort.Ascending ? Icon.ArrowDown : Icon.ArrowUp"
+          rounded="xl"
+        >
+          Sort by name
+        </IconButton>
+      </v-col>
+    </v-row>
+    <v-row>
+      <WarningAlert v-if="!paginatedPlanets.length" warningMessage="No data found" />
+      <PlanetList v-else :planets="paginatedPlanets" />
+    </v-row>
+    <v-row justify="end">
+      <ListPaginator
+        :totalPages="totalPages"
+        v-model:itemsPerPage="itemsPerPage"
+        v-model:currentPage="currentPage"
+      />
+    </v-row>
+  </template>
 </template>
 
 <script setup lang="ts">

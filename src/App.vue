@@ -1,5 +1,7 @@
 <template>
-  <PlanetCards />
+  <v-container>
+    <PlanetCards />
+  </v-container>
 </template>
 
 <script setup lang="ts">
