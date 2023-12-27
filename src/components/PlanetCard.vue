@@ -59,8 +59,8 @@ const planetCardContents: SingleCardInfo[] = [
   &-title {
     font-size: 1.5em;
     border-radius: 10px 10px 0 0;
-    color: #fff;
-    background: #3498db;
+    color: $white-1;
+    background: $blue-1;
   }
 }
 

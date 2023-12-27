@@ -25,9 +25,9 @@ defineProps({
 .icon-button {
   cursor: pointer;
   border-radius: 8px;
-  border: 2px solid #3498db;
-  background-color: #3498db;
-  color: #fff;
+  border: 2px solid $blue-1;
+  background-color: $blue-1;
+  color: $white-1;
   transition: background-color 0.2s ease;
 }
 </style>

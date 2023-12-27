@@ -6,11 +6,11 @@
 
 <script setup lang="ts"></script>
 
-<style scoped>
+<style scoped lang="scss">
 .loading-wrapper {
   height: 100vh;
   margin: auto;
   z-index: 99;
-  color: #3498db;
+  color: $blue-1;
 }
 </style>

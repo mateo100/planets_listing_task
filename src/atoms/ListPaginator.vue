@@ -39,7 +39,7 @@ defineProps({
   }
 })
 
-const itemsPerPageOptions = ref([2, 3, 5, 10])
+const itemsPerPageOptions = ref([3, 6, 10])
 </script>
 <style scoped lang="scss">
 .paginator {

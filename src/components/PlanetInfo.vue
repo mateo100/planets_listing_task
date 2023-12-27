@@ -1,7 +1,7 @@
 <template>
   <v-row class="planet-info pa-2 mt-4">
     <v-col cols="12" class="d-flex">
-      <v-icon class="mr-1" color="#3498db">{{ icon }}</v-icon>
+      <v-icon class="planet-info__icon mr-1">{{ icon }}</v-icon>
       <span class="planet-info__label font-weight-bold mr-1">{{ label }}:</span>
       <span v-if="isLink" class="planet-info__value ml-1">
         <a :href="value" class="planet-info__link" target="_blank">{{ value }}</a>
@@ -37,7 +37,7 @@ defineProps({
 <style scoped lang="scss">
 .planet-info {
   border-radius: 10px;
-  background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+  background: linear-gradient(45deg, $white-2, $white-3);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 
@@ -46,15 +46,19 @@ defineProps({
   }
 
   &__label {
-    color: #333;
+    color: $dark-1;
   }
 
   &__value {
-    color: #555;
+    color: $dark-2;
+  }
+
+  &__icon {
+    color: $blue-1;
   }
 
   &__link {
-    color: #3498db;
+    color: $blue-1;
     text-decoration: none;
     font-size: 0.9em;
     border-radius: 4px;
@@ -63,9 +67,9 @@ defineProps({
       color 0.3s;
 
     &:hover {
-      background-color: #2ecc71;
+      background-color: $green-1;
       text-decoration: underline;
-      color: #fff;
+      color: $white-1;
     }
   }
 }
