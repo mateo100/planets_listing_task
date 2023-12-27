@@ -1,5 +1,5 @@
 <template>
-  <div class="paginator d-flex justify-center" style="flex-wrap: wrap">
+  <div class="paginator d-flex flex-wrap justify-center">
     <v-select
       :modelValue="itemsPerPage"
       @update:modelValue="(newValue) => $emit('update:itemsPerPage', newValue)"
