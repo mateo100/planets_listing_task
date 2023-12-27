@@ -3,7 +3,7 @@
     <LoadingSpinner v-if="loading" />
     <ErrorAlert v-else-if="error" :errorMessage="error" />
     <template v-else>
-      <v-row>
+      <v-row align="center">
         <v-col cols="6" md="3">
           <v-text-field
             v-model="searchQuery"
@@ -14,12 +14,7 @@
           />
         </v-col>
         <v-col cols="6" md="3">
-          <IconButton
-            @buttonIconClicked="toggleSortOrder"
-            :iconName="sortOrderIcon"
-            size="small"
-            rounded="xl"
-          >
+          <IconButton @buttonIconClicked="toggleSortOrder" :iconName="sortOrderIcon" rounded="xl">
             Sort by name
           </IconButton>
         </v-col>
