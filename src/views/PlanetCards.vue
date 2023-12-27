@@ -2,8 +2,8 @@
   <LoadingSpinner v-if="loading" />
   <ErrorAlert v-else-if="error" :errorMessage="error" />
   <template v-else>
-    <v-row align="center">
-      <v-col cols="6" md="3">
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="4" md="3">
         <v-text-field
           v-model="searchQuery"
           label="Planet name"
@@ -12,7 +12,7 @@
           variant="underlined"
         />
       </v-col>
-      <v-col cols="6" md="3">
+      <v-col cols="12" sm="4" md="3">
         <IconButton
           @buttonIconClicked="toggleSortOrder"
           :iconName="sortOrder === Sort.Ascending ? Icon.ArrowDown : Icon.ArrowUp"
@@ -71,7 +71,7 @@ const toggleSortOrder = () => {
   sortOrder.value = sortOrder.value === Sort.Ascending ? Sort.Descending : Sort.Ascending
 }
 
-watch([searchQuery, sortOrder], () => {
+watch([searchQuery, sortOrder, itemsPerPage], () => {
   currentPage.value = 1
 })
 </script>

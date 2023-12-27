@@ -51,6 +51,7 @@ defineProps({
 
   &__value {
     color: $dark-2;
+    word-break: break-all;
   }
 
   &__icon {
