@@ -1,7 +1,7 @@
 <template>
-  <v-row class="planet-info pa-4 mt-4">
+  <v-row class="planet-info pa-2 mt-4">
     <v-col cols="12" class="d-flex">
-      <v-icon class="mr-1">{{ icon }}</v-icon>
+      <v-icon class="mr-1" color="#3498db">{{ icon }}</v-icon>
       <span class="planet-info__label font-weight-bold mr-1">{{ label }}:</span>
       <span v-if="isLink" class="planet-info__value ml-1">
         <a :href="value" class="planet-info__link" target="_blank">{{ value }}</a>
