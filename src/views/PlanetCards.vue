@@ -24,7 +24,8 @@
         </v-col>
       </v-row>
       <v-row>
-        <PlanetList :planets="paginatedPlanets" />
+        <WarningAlert v-if="!paginatedPlanets.length" warningMessage="No data found" />
+        <PlanetList v-else :planets="paginatedPlanets" />
       </v-row>
       <v-row justify="end">
         <ListPaginator
@@ -47,6 +48,7 @@ import { usePaginate } from '@/composables/usePaginate'
 import LoadingSpinner from '@/atoms/LoadingSpinner.vue'
 import IconButton from '@/atoms/IconButton.vue'
 import ErrorAlert from '@/atoms/ErrorAlert.vue'
+import WarningAlert from '@/atoms/WarningAlert.vue'
 import ListPaginator from '@/atoms/ListPaginator.vue'
 import PlanetList from '@/components/PlanetList.vue'
 import { type PlanetsResponse } from '@/interfaces/Planet'
@@ -54,7 +56,7 @@ import { Icon, Sort } from '@/interfaces/Utility'
 
 const { data, loading, error } = useFetchData<PlanetsResponse>('https://swapi.dev/api/planets')
 
-const itemsPerPage = ref(5)
+const itemsPerPage = ref(6)
 const currentPage = ref(1)
 const searchQuery = ref('')
 const sortOrder = ref(Sort.Ascending)

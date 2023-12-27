@@ -15,7 +15,8 @@ export enum Icon {
   Search = 'mdi-magnify',
   ArrowUp = 'mdi-arrow-up',
   ArrowDown = 'mdi-arrow-down',
-  ErrorCircle = 'mdi-alert-circle'
+  ErrorCircle = 'mdi-alert-circle',
+  AlertCircle = 'mdi-alert-circle-outline'
 }
 
 export enum Sort {
